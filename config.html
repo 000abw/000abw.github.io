@@ -1,10 +1,21 @@
 <html>
+  <script src="https://unpkg.com/@microsoft/teams-js@1.4.2/dist/MicrosoftTeams.min.js" integrity="sha384-DcoNUuQTjpW5Sw3msonn/2ojgtNvtC5fCGd5U9RUpL3g1hla1LzHz8I9YIYSXe6q" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+   function initiate() {
+       microsoftTeams.initialize();
+       microsoftTeams.settings.setSettings({
+            entityId: "test",
+            contentURL: "https://000abw.github.io/test.html",
+            suggestedDisplayName: "Big Boss Tab",
+            websiteUrl: "https://000abw.github.io/test.html",
+            reomoveUrl: "https://000abw.github.io/test.html"
+        });
+        saveEvent.notifySuccess();
+        microsoftTeams.settings.setValidityState(true);
+   }
+window.addEventListener("load", inititate)
+</script>
 <body>
    <p>Here's my config page!</p>
-    <script src="https://unpkg.com/@microsoft/teams-js@1.4.2/dist/MicrosoftTeams.min.js" integrity="sha384-DcoNUuQTjpW5Sw3msonn/2ojgtNvtC5fCGd5U9RUpL3g1hla1LzHz8I9YIYSXe6q" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-    microsoftTeams.initialize();
-    microsoftTeams.settings.setValidityState(true);
-</script>
 </body>
 </html>
