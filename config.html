@@ -1,14 +1,23 @@
 <html>
-  <script src="https://unpkg.com/@microsoft/teams-js@1.4.2/dist/MicrosoftTeams.min.js" integrity="sha384-DcoNUuQTjpW5Sw3msonn/2ojgtNvtC5fCGd5U9RUpL3g1hla1LzHz8I9YIYSXe6q" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-   function initiate() {
-       microsoftTeams.initialize();
-        saveEvent.notifySuccess();
-        microsoftTeams.settings.setValidityState(true);
-   }
-window.addEventListener("load", inititate)
-</script>
 <body>
-   <p>Here's my config page! v2</p>
+   <p>Here's my config page! v3</p>
+    <script src="https://unpkg.com/@microsoft/teams-js@1.4.2/dist/MicrosoftTeams.min.js" integrity="sha384-DcoNUuQTjpW5Sw3msonn/2ojgtNvtC5fCGd5U9RUpL3g1hla1LzHz8I9YIYSXe6q" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        microsoftTeams.initialize();
+        microsoftTeams.settings.registerOnSaveHandler(function (saveEvent) {
+            // Let the Microsoft Teams platform know what you want to load based on
+            // what the user configured on this page
+            microsoftTeams.settings.setSettings({
+                contentUrl: 'https://000abw.github.io/test.html', // Mandatory parameter
+                entityId: 'https://000abw.github.io/test.html' // Mandatory parameter
+            });
+
+            // Tells Microsoft Teams platform that we are done saving our settings. Microsoft Teams waits
+            // for the app to call this API before it dismisses the dialog. If the wait times out, you will
+            // see an error indicating that the configuration settings could not be saved.
+            saveEvent.notifySuccess();
+        });
+        microsoftTeams.settings.setValidityState(true);
+</script>
 </body>
 </html>
