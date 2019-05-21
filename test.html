@@ -6,14 +6,18 @@
     <script src="https://unpkg.com/@microsoft/teams-js@1.4.2/dist/MicrosoftTeams.min.js" integrity="sha384-DcoNUuQTjpW5Sw3msonn/2ojgtNvtC5fCGd5U9RUpL3g1hla1LzHz8I9YIYSXe6q" crossorigin="anonymous"></script>
     <script type="text/javascript">
         microsoftTeams.initialize();
-        document.getElementById("message").innerHTML += " test";
+        function start() {
+
+            document.getElementById("message").innerHTML += " test";
+        }
+        window.onload = start;
+
     </script>
 </head>
 
 <body>
     <h1>Hello world!</h1>
-    <p>This is my test app for Teams. v4</p>
+    <p>This is my test app for Teams. v2</p>
     <div id="message">This is the message: </div>
 </body>
-
 </html>
