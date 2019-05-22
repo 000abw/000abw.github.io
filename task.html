@@ -8,8 +8,8 @@
         microsoftTeams.initialize();
         function validateForm() {
             var customerInfo = {
-            name: document.forms["customerForm"]["color"].value,
-            email: document.forms["customerForm"]["food"].value
+            color: document.forms["customerForm"]["color"].value,
+            food: document.forms["customerForm"]["food"].value
                 }
             microsoftTeams.tasks.submitTask(customerInfo, "be241cba-1917-4328-9315-93fb6b617e4f");
             return true;
@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <h1>This is the task module v1</h1>
+    <h1>This is the task module</h1>
     <form method="POST" id="customerForm" action="/register" onSubmit="return validateForm()">
         Favorite color:<br>
         <input type="text" name="color">
