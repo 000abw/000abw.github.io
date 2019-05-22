@@ -2,42 +2,31 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Test</title>
+    <title>TaskMod</title>
     <script src="https://unpkg.com/@microsoft/teams-js@1.4.2/dist/MicrosoftTeams.min.js" integrity="sha384-DcoNUuQTjpW5Sw3msonn/2ojgtNvtC5fCGd5U9RUpL3g1hla1LzHz8I9YIYSXe6q" crossorigin="anonymous"></script>
     <script type="text/javascript">
         microsoftTeams.initialize();
-        let taskInfo = {
-        title: null,
-        height: null,
-        width: null,
-        url: null,
-        card: null,
-        fallbackUrl: null,
-        completionBotId: null,
-            };
-        function start() {
-
-            document.getElementById("message").innerHTML += " test";
-        }
-        function taskMod() {
-            taskInfo.url = "https://000abw.github.io/task.html";
-            taskInfo.title = "Custom Form";
-            taskInfo.height = 510;
-            taskInfo.width = 430;
-            submitHandler = (err, result) => {
-                console.log(`Submit handler - err: ${err}`);
-            };
-            microsoftTeams.tasks.startTask(taskInfo, submitHandler);
-        }
-        window.onload = start;
-
+        function validateForm() {
+            var customerInfo = {
+            name: document.forms["customerForm"]["color"].value,
+            email: document.forms["customerForm"]["food"].value
+                }
+            microsoftTeams.tasks.submitTask(customerInfo);
+            return true;
+}
     </script>
 </head>
 
 <body>
-    <h1>Hello world!</h1>
-    <p>This is my test app for Teams. v2</p>
-    <div id="message">This is the message: </div>
-    <button onClick="taskMod()">Start Task Module</button>
+    <h1>This is the task module</h1>
+    <form method="POST" id="customerForm" action="/register" onSubmit="return validateForm()">
+        Favorite color:<br>
+        <input type="text" name="color">
+        <br>
+        Favorite food:<br>
+        <input type="text" name="food">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
