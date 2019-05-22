@@ -27,7 +27,7 @@
             submitHandler = (err, result) => {
                 console.log(`Submit handler - err: ${err}`);
             };
-            alert("Great Job");
+            microsoftTeams.tasks.startTask(taskInfo, submitHandler);
         }
         window.onload = start;
 
