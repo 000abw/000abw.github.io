@@ -1,0 +1,35 @@
+<html>
+<body>
+    <h2>Welcome to the configuration page for my test app.</h2>
+    <p>Here are some choices for how this app should be setup</p>
+    <form>
+        <input type="radio" name="content" value="option1" onclick="onClick()"> Default<br>
+        <input type="radio" name="content" value="option2" onclick="onClick()"> Display other content<br>
+    </form>
+
+    <script src="https://unpkg.com/@microsoft/teams-js@1.4.2/dist/MicrosoftTeams.min.js" integrity="sha384-DcoNUuQTjpW5Sw3msonn/2ojgtNvtC5fCGd5U9RUpL3g1hla1LzHz8I9YIYSXe6q" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        microsoftTeams.initialize();
+        microsoftTeams.settings.registerOnSaveHandler(function (saveEvent) {
+            var radios = document.getElementsByName("content");
+            if (radios[0].checked) {
+                microsoftTeams.settings.setSettings({
+                    entityId: "default",
+                    contentUrl: "https://000abw.github.io/test1.html",
+                    suggestedDisplayName: "Default",
+                });
+            } else {
+                microsoftTeams.settings.setSettings({
+                    entityId: "other",
+                    contentUrl: "https://000abw.github.io/test2.html",
+                    suggestedDisplayName: "Other",
+                });
+            }
+                saveEvent.notifySuccess();
+        });
+        function onClick() {
+        microsoftTeams.settings.setValidityState(true);
+        }
+    </script>
+</body>
+</html>
