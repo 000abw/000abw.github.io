@@ -6,12 +6,28 @@
     <script src="https://unpkg.com/@microsoft/teams-js@1.4.2/dist/MicrosoftTeams.min.js" integrity="sha384-DcoNUuQTjpW5Sw3msonn/2ojgtNvtC5fCGd5U9RUpL3g1hla1LzHz8I9YIYSXe6q" crossorigin="anonymous"></script>
     <script type="text/javascript">
         microsoftTeams.initialize();
+        let taskInfo = {
+        title: null,
+        height: null,
+        width: null,
+        url: null,
+        card: null,
+        fallbackUrl: null,
+        completionBotId: null,
+            };
         function start() {
 
             document.getElementById("message").innerHTML += " test";
         }
-        function taskMod() { 
-            alert("Great Job"); 
+        function taskMod() {
+            taskInfo.url = "https://contoso.com/teamsapp/customform";
+            taskInfo.title = "Custom Form";
+            taskInfo.height = 510;
+            taskInfo.width = 430;
+            submitHandler = (err, result) => {
+                console.log(`Submit handler - err: ${err}`);
+            };
+            alert("Great Job");
         }
         window.onload = start;
 
