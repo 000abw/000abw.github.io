@@ -6,10 +6,27 @@
     <script src="https://unpkg.com/@microsoft/teams-js@1.4.2/dist/MicrosoftTeams.min.js" integrity="sha384-DcoNUuQTjpW5Sw3msonn/2ojgtNvtC5fCGd5U9RUpL3g1hla1LzHz8I9YIYSXe6q" crossorigin="anonymous"></script>
     <script type="text/javascript">
         microsoftTeams.initialize();
+        function validateForm() {
+            var customerInfo = {
+            name: document.forms["customerForm"]["color"].value,
+            email: document.forms["customerForm"]["food"].value
+                }
+            microsoftTeams.tasks.submitTask(customerInfo);
+            return true;
+}
     </script>
 </head>
 
 <body>
     <h1>This is the task module</h1>
+    <form method="POST" id="customerForm" action="/register" onSubmit="return validateForm()">
+        Favorite color:<br>
+        <input type="text" name="color">
+        <br>
+        Favorite food:<br>
+        <input type="text" name="food">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
