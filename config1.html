@@ -1,17 +1,85 @@
 <html>
 <body>
+    <style>
+        h2 {
+            font-family: 'Segoe UI';
+        }
+
+        p {
+            font-family: 'Segoe UI';
+        }
+        .container {
+          font-family: 'Segoe UI';
+          display: block;
+          position: relative;
+          padding-left: 35px;
+          margin-bottom: 9px;
+          cursor: pointer;
+          font-size: 16px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+
+        .container input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+        }
+
+        .checkmark {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 20px;
+          width: 20px;
+          background-color: #eee;
+          border-radius: 50%;
+        }
+
+        .container:hover input ~ .checkmark {
+          background-color: #ccc;
+        }
+
+        .container input:checked ~ .checkmark {
+          background-color: #5558AF;
+        }
+
+        .checkmark:after {
+          content: "";
+          position: absolute;
+          display: none;
+        }
+
+        .container .checkmark:after {
+ 	        top: 9px;
+	        left: 9px;
+	        width: 8px;
+	        height: 8px;
+	        border-radius: 50%;
+	        background: white;
+        }
+    </style>
     <h2>Welcome to the configuration page for my test app.</h2>
     <p>Here are some choices for how this app should be setup</p>
     <form>
-        <input type="radio" name="content" value="option1" onclick="onClick()"> Default<br>
-        <input type="radio" name="content" value="option2" onclick="onClick()"> Display other content<br>
+        <label class="container">
+            Default
+            <input type="radio" name="radio" value="option1" onclick="onClick()">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container">
+            Display other content
+            <input type="radio" name="radio" value="option2" onclick="onClick()">
+            <span class="checkmark"></span>
+        </label>
     </form>
-
     <script src="https://unpkg.com/@microsoft/teams-js@1.4.2/dist/MicrosoftTeams.min.js" integrity="sha384-DcoNUuQTjpW5Sw3msonn/2ojgtNvtC5fCGd5U9RUpL3g1hla1LzHz8I9YIYSXe6q" crossorigin="anonymous"></script>
     <script type="text/javascript">
         microsoftTeams.initialize();
         microsoftTeams.settings.registerOnSaveHandler(function (saveEvent) {
-            var radios = document.getElementsByName("content");
+            var radios = document.getElementsByName("radio");
             if (radios[0].checked) {
                 microsoftTeams.settings.setSettings({
                     entityId: "default",
@@ -25,10 +93,10 @@
                     suggestedDisplayName: "Other",
                 });
             }
-                saveEvent.notifySuccess();
+            saveEvent.notifySuccess();
         });
         function onClick() {
-        microsoftTeams.settings.setValidityState(true);
+            microsoftTeams.settings.setValidityState(true);
         }
     </script>
 </body>
