@@ -11,20 +11,25 @@
         p {
             font-family: 'Segoe UI';
         }
+        div {
+            font-family: 'Segoe UI';
+        }
     </style>
 
     <script src="https://unpkg.com/@microsoft/teams-js@1.4.2/dist/MicrosoftTeams.min.js" integrity="sha384-DcoNUuQTjpW5Sw3msonn/2ojgtNvtC5fCGd5U9RUpL3g1hla1LzHz8I9YIYSXe6q" crossorigin="anonymous"></script>
     <script type="text/javascript">
+        
         microsoftTeams.initialize();
         microsoftTeams.getContext(function (context) {
-            document.getElementById("out").innerHTML += context.theme;
+            if (context.theme != "default")
+                document.getElementByClass("teams").style.color = white;
         });
         
     </script>
 </head>
         <body >
-        <h1 > Hello world!</h1 >
-        <p > This is my default test app. v2</p >
-        <div id="out">The theme is: </div>
-        </body >
-        </html >
+        <h1 class="teams">Hello world!</h1>
+        <p class="teams">This is my default test app. v1</pclass="teams">
+        <div id="out" class="teams">The theme is: </div>
+        </body>
+        </html>
