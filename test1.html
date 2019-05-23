@@ -7,31 +7,34 @@
         body {
             font-family: 'Segoe UI';
         }
-
     </style>
 
     <script src="https://unpkg.com/@microsoft/teams-js@1.4.2/dist/MicrosoftTeams.min.js" integrity="sha384-DcoNUuQTjpW5Sw3msonn/2ojgtNvtC5fCGd5U9RUpL3g1hla1LzHz8I9YIYSXe6q" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        
+
         microsoftTeams.initialize();
         function initialize() {
-            
+
             microsoftTeams.getContext(function (context) {
-                if (context.theme != "default") { document.body.style.color = "white"; }
-                else { document.body.style.color = "black"; }
+                if (context.theme != "default")
+                    document.body.style.color = "white";
+                else
+                    document.body.style.color = "black";
             });
             microsoftTeams.registerOnThemeChangeHandler(function (theme) {
                 microsoftTeams.getContext(function (context) {
-                    if (context.theme != "default") { document.body.style.color = "white"; }
-                    else { document.body.style.color = "black"; }
+                    if (context.theme != "default")
+                        document.body.style.color = "white";
+                    else
+                        document.body.style.color = "black";
                 });
             });
         }
         window.onload = initialize;
     </script>
 </head>
-        <body>
-        <h1>Hello world!</h1>
-        <p>This is my default test app.</p>     
-        </body>
-        </html>
+<body>
+    <h1>Hello world!</h1>
+    <p>This is my default test app.</p>
+</body>
+</html>
