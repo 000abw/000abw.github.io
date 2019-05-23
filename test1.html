@@ -22,12 +22,10 @@
                     document.body.style.color = "black";
             });
             microsoftTeams.registerOnThemeChangeHandler(function (theme) {
-                microsoftTeams.getContext(function (context) {
-                    if (context.theme != "default")
-                        document.body.style.color = "white";
-                    else
-                        document.body.style.color = "black";
-                });
+               if (theme != "default")
+                   document.body.style.color = "white";
+               else
+                   document.body.style.color = "black";
             });
         }
         window.onload = initialize;
