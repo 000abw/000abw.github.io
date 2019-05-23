@@ -18,8 +18,9 @@
         
         microsoftTeams.initialize();
         microsoftTeams.getContext(function (context) {
-            if (context.theme != "default")
-                document.getElementByClass("teams").style.color = white;
+            if (context.theme != "default") {
+                document.getElementByClassName("teams").style.color = white;
+            }
         });
         
     </script>
