@@ -17,16 +17,18 @@
     <script type="text/javascript">
         
         microsoftTeams.initialize();
+        document.getElementByClassName("teams").style.color = "white";
         microsoftTeams.getContext(function (context) {
-            if (context.theme != "default") {
-                document.getElementByClassName("teams").style.color = "white";
-            }
+            
+                document.getElementById("teams").innerHTML += context.theme;
+           
         });
         
     </script>
 </head>
         <body >
         <h1 class="teams">Hello world!</h1>
-        <p class="teams">This is my default test app. v4</p>
+        <p class="teams">This is my default test app.</p>
+        <div class="teams" id="teams">The result is: </div>
         </body>
         </html>
